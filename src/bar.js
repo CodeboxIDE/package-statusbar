@@ -13,10 +13,10 @@ define(function() {
             var that = this;
             options = _.defaults(options || {}, {
                 // Interval for indicator update (in ms)
-                interval: 300,
+                interval: 100,
 
                 // Size of indicator
-                size: 7
+                size: 8
             });
 
             var direction = 1;
@@ -30,7 +30,7 @@ define(function() {
                     if (i == position) {
                         content += "=";
                     } else {
-                        content += "-";
+                        content += " ";
                     }
                 })
 
