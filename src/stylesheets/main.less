@@ -13,7 +13,21 @@
     color: @color-3;
 
     line-height: @statusbar-height;
-    white-space: pre;
+
+    .statusbar-messages {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+
+        .message {
+            white-space: pre;
+            float: left;
+
+            &.position-right {
+                float: right;
+            }
+        }
+    }
 }
 
 body {
