@@ -4,9 +4,15 @@ define(function() {
 
     var Message = hr.Model.extend({
         defaults: {
-            'id': "",
             'content': "",
-            'position': "left"
+            'position': "left",
+            'visible': true
+        },
+
+        // Toggle visibility
+        toggleVisibility: function(st) {
+            if (st == undefined) st = !this.get("visible");
+            this.set("visible", st);
         }
     });
 

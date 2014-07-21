@@ -9,6 +9,7 @@ define([
         render: function() {
             this.$el.html(this.model.get("content"));
             this.$el.attr("class", "message position-"+this.model.get("position"));
+            this.$el.toggle(this.model.get("visible"));
 
             return this.ready();
         }
@@ -27,25 +28,15 @@ define([
         initialize: function() {
             StatusBar.__super__.initialize.apply(this, arguments);
 
+            this.Messages = Messages;
+
             this.messages = new MessagesList({}, this);
             this.messages.appendTo(this);
         },
 
         // Add/Get message
-        message: function(id, content, options) {
-            options = _.extend({}, options || {}, {
-                'id': id,
-                'content': content || ""
-            });
-
-            var m = this.messages.collection.get(id);
-            if (m) {
-                m.set(options);
-                return m;
-            }
-
-            this.messages.collection.add(options);
-            return this.messages.collection.get(id);
+        message: function(options) {
+            return this.messages.collection.add(options);
         },
 
         // Show loading indicator for a promise
@@ -53,9 +44,6 @@ define([
         loading: function(p, options) {
             var that = this;
             options = _.defaults(options || {}, {
-                // Id for the loading message
-                id: "loading",
-
                 // Interval for indicator update (in ms)
                 interval: 100,
 
@@ -66,7 +54,7 @@ define([
                 prefix: ""
             });
 
-            var msg = this.message(options.id);
+            var msg = this.message();
 
             var direction = 1;
             var position = 0;
