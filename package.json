@@ -1,0 +1,9 @@
+{
+    "name": "statusbar",
+    "version": "0.0.0",
+    "description": "Statusbar for Codebox",
+    "main": "src/index",
+    "engines": {
+        "codebox": ">=1.0.0"
+    }
+}

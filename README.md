@@ -1,4 +1,3 @@
-package-statusbar
-=================
+# Status Bar
 
-Status bar for Codebox
+This package contains the status bar component in the IDE.
