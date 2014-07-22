@@ -85,7 +85,7 @@ define([
 
             interval = setInterval(showIndicator, options.interval);
 
-            p.done(function() {
+            p.fin(function() {
                 clearInterval(interval);
                 msg.destroy();
             });
