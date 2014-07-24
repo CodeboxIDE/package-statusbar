@@ -1,4 +1,6 @@
 @statusbar-height: 24px;
+@statusbar-message-margin: 15px;
+
 
 .component-statusbar {
     position: fixed;
@@ -22,6 +24,7 @@
         .message {
             white-space: pre;
             float: left;
+            margin-right: @statusbar-message-margin;
 
             &.position-right {
                 float: right;

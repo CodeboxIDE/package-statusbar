@@ -6,7 +6,8 @@ define(function() {
         defaults: {
             'content': "",
             'position': "left",
-            'visible': true
+            'visible': true,
+            'order': 10
         },
 
         // Toggle visibility
@@ -17,7 +18,10 @@ define(function() {
     });
 
     var Messages = hr.Collection.extend({
-        model: Message
+        model: Message,
+        comparator: function(msg) {
+            return msg.get("order", 10);
+        }
     });
 
     return Messages;

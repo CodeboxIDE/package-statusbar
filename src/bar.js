@@ -54,7 +54,9 @@ define([
                 prefix: ""
             });
 
-            var msg = this.message();
+            var msg = this.message({
+                order: 1
+            });
 
             var direction = 1;
             var position = 0;
