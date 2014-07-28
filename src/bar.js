@@ -102,7 +102,11 @@ define([
 
             interval = setInterval(showIndicator, options.interval);
 
-            p.fin(function() {
+            p
+            .fin(function() {
+                return Q.delay(300);
+            })
+            .fin(function() {
                 clearInterval(interval);
                 msg.destroy();
             });
