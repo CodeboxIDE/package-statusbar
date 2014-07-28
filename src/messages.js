@@ -7,7 +7,8 @@ define(function() {
             'content': "",
             'position': "left",
             'visible': true,
-            'order': 10
+            'order': 10,
+            'click': null
         },
 
         // Toggle visibility

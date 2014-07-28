@@ -25,9 +25,18 @@
             white-space: pre;
             float: left;
             margin-right: @statusbar-message-margin;
+            cursor: default;
 
             &.position-right {
                 float: right;
+            }
+
+            &.type-action {
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
     }

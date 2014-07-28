@@ -6,12 +6,27 @@ define([
     var _ = codebox.require("hr/utils");
 
     var MessageItem = hr.List.Item.extend({
+        events: {
+            click: "click"
+        },
+
         render: function() {
+            var className = "message";
+
+            className += " position-"+this.model.get("position");
+            if (this.model.get("click")) className += " type-action";
+
             this.$el.html(this.model.get("content"));
-            this.$el.attr("class", "message position-"+this.model.get("position"));
+            this.$el.attr("class", className);
             this.$el.toggle(this.model.get("visible"));
 
             return this.ready();
+        },
+
+        click: function(e) {
+            if (this.model.get("click")) {
+                this.model.get("click")(e);
+            }
         }
     });
 
