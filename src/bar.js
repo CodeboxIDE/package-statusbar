@@ -80,15 +80,17 @@ define([
             var showIndicator = function() {
                 var content = options.prefix? options.prefix+" " : "";
 
-                content += "[";
-                _.each(_.range(options.size), function(i) {
-                    if (i == position) {
-                        content += "=";
-                    } else {
-                        content += " ";
-                    }
-                })
-                content += "]";
+                if (options.size > 0) {
+                    content += "[";
+                    _.each(_.range(options.size), function(i) {
+                        if (i == position) {
+                            content += "=";
+                        } else {
+                            content += " ";
+                        }
+                    })
+                    content += "]";
+                }
 
                 msg.set("content", content);
                 position = position + direction;
@@ -112,6 +114,14 @@ define([
             });
 
             return p;
+        },
+
+        // Show short message
+        show: function(msg, duration) {
+            return this.loading(Q.delay(duration), {
+                prefix: msg,
+                size: 0
+            });
         }
     });
 
