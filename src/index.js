@@ -1,7 +1,8 @@
 define([
+    "src/settings",
     "src/bar",
     "less!src/stylesheets/main.less"
-], function(StatusBar) {
+], function(settings, StatusBar) {
     var commands = codebox.require("core/commands");
     var dialogs = codebox.require("utils/dialogs");
 
@@ -16,7 +17,8 @@ define([
             "mod+b", "mod+k"
         ],
         run: function() {
-            codebox.app.$el.toggleClass("hide-statusbar");
+            settings.data.set("visible", !settings.data.get("visible"));
+            codebox.settings.save();
         }
     });
 

@@ -1,6 +1,7 @@
 define([
+    "src/settings",
     "src/messages"
-], function(Messages) {
+], function(settings, Messages) {
     var hr = codebox.require("hr/hr");
     var $ = codebox.require("hr/dom");
     var _ = codebox.require("hr/utils");
@@ -45,8 +46,13 @@ define([
 
             this.Messages = Messages;
 
+            // Create list of all messages in status bar
             this.messages = new MessagesList({}, this);
             this.messages.appendTo(this);
+
+            // Bind settings update
+            this.listenTo(settings.data, "change", this.onSettingsChange);
+            this.onSettingsChange();
         },
 
         // Add/Get message
@@ -122,6 +128,11 @@ define([
                 prefix: msg,
                 size: 0
             });
+        },
+
+        // When settings changed
+        onSettingsChange: function() {
+            codebox.app.$el.toggleClass("hide-statusbar", !settings.data.get("visible"));
         }
     });
 
