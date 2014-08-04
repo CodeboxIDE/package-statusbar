@@ -122,6 +122,37 @@ define([
             return p;
         },
 
+        // Show progress indicator for a promise
+        // Return the same promise
+        progress: function(p, options) {
+            var that = this;
+            options = _.defaults(options || {}, {
+                // Prefix
+                prefix: ""
+            });
+
+            var msg = this.message({
+                order: 1
+            });
+
+            var update = function(percent) {
+                percent = _.isNumber(percent) ? percent : percent.percent;
+                msg.set("content", options.prefix+" "+percent+"%");
+            };
+
+            update(0);
+            p
+            .progress(update)
+            .fin(function() {
+                return Q.delay(300);
+            })
+            .fin(function() {
+                msg.destroy();
+            });
+
+            return p;
+        },
+
         // Show short message
         show: function(msg, duration) {
             return this.loading(Q.delay(duration), {
