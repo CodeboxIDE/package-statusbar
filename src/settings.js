@@ -1,5 +1,5 @@
 define(function() {
-    return codebox.settings.schema("find",
+    return codebox.settings.schema("statusbar",
         {
             "title": "Status Bar",
             "type": "object",
