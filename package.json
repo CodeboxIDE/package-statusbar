@@ -2,7 +2,7 @@
     "name": "statusbar",
     "version": "0.0.0",
     "description": "Statusbar for Codebox",
-    "main": "src/index",
+    "browser": "./src/index.js",
     "engines": {
         "codebox": ">=1.0.0"
     }
