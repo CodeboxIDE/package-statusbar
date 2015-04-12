@@ -22,5 +22,13 @@ commands.register({
     }
 });
 
+// Add to View menu
+if (codebox.menubar) {
+    codebox.menubar.createMenu("view", {
+        caption: "Toggle Status Bar",
+        command: "view.statusbar.toggle"
+    });
+}
+
 // Exports statusbar
 codebox.statusbar = bar;
