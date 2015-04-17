@@ -4,6 +4,6 @@
     "description": "Statusbar for Codebox",
     "browser": "./src/index.js",
     "engines": {
-        "codebox": ">=1.0.0"
+        "codebox": ">=1.0.0-alpha"
     }
 }
